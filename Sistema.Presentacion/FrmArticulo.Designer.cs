@@ -54,11 +54,16 @@ namespace Sistema.Presentacion
             this.tabGeneral = new System.Windows.Forms.TabControl();
             this.label4 = new System.Windows.Forms.Label();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtImagen = new System.Windows.Forms.TextBox();
+            this.btnImagen = new System.Windows.Forms.Button();
+            this.picImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -67,7 +72,7 @@ namespace Sistema.Presentacion
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(124, 410);
+            this.btnActualizar.Location = new System.Drawing.Point(124, 466);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(154, 23);
             this.btnActualizar.TabIndex = 8;
@@ -77,7 +82,7 @@ namespace Sistema.Presentacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 352);
+            this.label3.Location = new System.Drawing.Point(121, 408);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 13);
             this.label3.TabIndex = 7;
@@ -85,7 +90,7 @@ namespace Sistema.Presentacion
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(284, 410);
+            this.btnCancelar.Location = new System.Drawing.Point(284, 466);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(139, 23);
             this.btnCancelar.TabIndex = 6;
@@ -94,7 +99,7 @@ namespace Sistema.Presentacion
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Location = new System.Drawing.Point(124, 410);
+            this.btnInsertar.Location = new System.Drawing.Point(124, 466);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(154, 23);
             this.btnInsertar.TabIndex = 5;
@@ -111,7 +116,7 @@ namespace Sistema.Presentacion
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(121, 238);
+            this.txtDescripcion.Location = new System.Drawing.Point(121, 294);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(302, 78);
@@ -119,7 +124,7 @@ namespace Sistema.Presentacion
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(121, 195);
+            this.txtNombre.Location = new System.Drawing.Point(121, 251);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(302, 20);
@@ -128,7 +133,7 @@ namespace Sistema.Presentacion
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 241);
+            this.label2.Location = new System.Drawing.Point(44, 297);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
@@ -136,6 +141,10 @@ namespace Sistema.Presentacion
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.picImagen);
+            this.tabPage2.Controls.Add(this.btnImagen);
+            this.tabPage2.Controls.Add(this.txtImagen);
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.cboCategoria);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btnActualizar);
@@ -150,7 +159,7 @@ namespace Sistema.Presentacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1252, 471);
+            this.tabPage2.Size = new System.Drawing.Size(1252, 500);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -158,7 +167,7 @@ namespace Sistema.Presentacion
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 198);
+            this.label1.Location = new System.Drawing.Point(44, 254);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
@@ -273,7 +282,7 @@ namespace Sistema.Presentacion
             this.tabGeneral.Location = new System.Drawing.Point(1, 2);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.SelectedIndex = 0;
-            this.tabGeneral.Size = new System.Drawing.Size(1260, 497);
+            this.tabGeneral.Size = new System.Drawing.Size(1260, 526);
             this.tabGeneral.TabIndex = 1;
             // 
             // label4
@@ -293,11 +302,47 @@ namespace Sistema.Presentacion
             this.cboCategoria.Size = new System.Drawing.Size(302, 21);
             this.cboCategoria.TabIndex = 10;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(695, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Imagen";
+            // 
+            // txtImagen
+            // 
+            this.txtImagen.Enabled = false;
+            this.txtImagen.Location = new System.Drawing.Point(768, 86);
+            this.txtImagen.Name = "txtImagen";
+            this.txtImagen.Size = new System.Drawing.Size(212, 20);
+            this.txtImagen.TabIndex = 12;
+            // 
+            // btnImagen
+            // 
+            this.btnImagen.Location = new System.Drawing.Point(994, 81);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(75, 23);
+            this.btnImagen.TabIndex = 13;
+            this.btnImagen.Text = "...";
+            this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            // 
+            // picImagen
+            // 
+            this.picImagen.Location = new System.Drawing.Point(768, 122);
+            this.picImagen.Name = "picImagen";
+            this.picImagen.Size = new System.Drawing.Size(301, 232);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImagen.TabIndex = 14;
+            this.picImagen.TabStop = false;
+            // 
             // FrmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1261, 500);
+            this.ClientSize = new System.Drawing.Size(1261, 540);
             this.Controls.Add(this.tabGeneral);
             this.Name = "FrmArticulo";
             this.Text = "Articulos";
@@ -309,6 +354,7 @@ namespace Sistema.Presentacion
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabGeneral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,5 +385,9 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox picImagen;
+        private System.Windows.Forms.Button btnImagen;
+        private System.Windows.Forms.TextBox txtImagen;
+        private System.Windows.Forms.Label label5;
     }
 }

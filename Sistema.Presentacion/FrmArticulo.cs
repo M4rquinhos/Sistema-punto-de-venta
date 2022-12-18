@@ -13,6 +13,9 @@ namespace Sistema.Presentacion
 {
     public partial class FrmArticulo : Form
     {
+        private string rutaOrigen;
+        private string rutaDestino;
+        private string directorio = @"E:\Documentos\dev\cursos\cursos\c#\ImSistema";
         public FrmArticulo()
         {
             InitializeComponent();
@@ -119,6 +122,18 @@ namespace Sistema.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Buscar();
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                picImagen.Image = Image.FromFile(file.FileName);
+                txtImagen.Text = file.FileName.Substring(file.FileName.LastIndexOf(@"\" ) + 1);
+                rutaOrigen = file.FileName;
+            }
         }
     }
 }
