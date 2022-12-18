@@ -95,9 +95,25 @@ namespace Sistema.Presentacion
             MessageBox.Show(mensaje, "Sistemas de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void CargarCategoria()
+        {
+            try
+            {
+                cboCategoria.DataSource = NCategoria.Seleccionar();
+                cboCategoria.ValueMember = "idcategoria";
+                cboCategoria.DisplayMember = "nombre";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
             Listar();
+            CargarCategoria();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

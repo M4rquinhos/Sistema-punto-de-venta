@@ -64,6 +64,32 @@ namespace Sistema.Datos
             }
         }
 
+        public DataTable Seleccionar()
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion(); //Creando la conexion con la BD
+                SqlCommand comando = new SqlCommand("categorias_seleccionar", sqlCon); //recibe que es lo que se quiere hacer (SP O QUERY)
+                comando.CommandType = CommandType.StoredProcedure; //Se indica que es un SP
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
         public string Existe(string valor)
         {
             string respuesta = "";
