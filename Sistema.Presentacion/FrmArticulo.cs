@@ -1,9 +1,11 @@
-﻿using Sistema.Negocio;
+﻿using BarcodeLib;
+using Sistema.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -134,6 +136,29 @@ namespace Sistema.Presentacion
                 txtImagen.Text = file.FileName.Substring(file.FileName.LastIndexOf(@"\" ) + 1);
                 rutaOrigen = file.FileName;
             }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            Barcode codigo = new Barcode();
+            codigo.IncludeLabel = true;
+            pnlcodigo.BackgroundImage = codigo.Encode(TYPE.CODE128, txtCodigo.Text, Color.Black, Color.White, 400, 100);
+            btnGuardarCod.Enabled = true;
+        }
+
+        private void btnGuardarCod_Click(object sender, EventArgs e)
+        {
+            Image imgFinal = (Image)pnlcodigo.BackgroundImage.Clone();
+
+            SaveFileDialog dialogoGuardar = new SaveFileDialog();
+            dialogoGuardar.AddExtension = true;
+            dialogoGuardar.Filter = "Image PNG (*.png)|*.png ";
+            dialogoGuardar.ShowDialog();
+            if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
+            {
+                imgFinal.Save(dialogoGuardar.FileName, ImageFormat.Png);
+            }
+            imgFinal.Dispose();
         }
     }
 }
