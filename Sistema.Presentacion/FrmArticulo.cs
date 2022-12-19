@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,10 +80,19 @@ namespace Sistema.Presentacion
             txtBuscar.Clear();
             txtId.Clear();
             txtNombre.Clear();
+            txtCodigo.Clear();
+            txtPrecioVenta.Clear();
+            txtStock.Clear();
+            txtImagen.Clear();
+            picImagen.Image = null;
+            pnlcodigo.BackgroundImage = null;
+            btnGuardarCod.Enabled = true;
             txtDescripcion.Clear();
             btnInsertar.Visible = true;
             btnActualizar.Visible = false;
             errorIcono.Clear();
+            rutaDestino = "";
+            rutaOrigen = "";
 
             dtgListado.Columns[0].Visible = false;
             btnActivar.Visible = false;
@@ -159,6 +169,54 @@ namespace Sistema.Presentacion
                 imgFinal.Save(dialogoGuardar.FileName, ImageFormat.Png);
             }
             imgFinal.Dispose();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (cboCategoria.Text == string.Empty || txtNombre.Text == string.Empty || txtPrecioVenta.Text == string.Empty || txtStock.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(cboCategoria, "Ingrese una categoria");
+                    errorIcono.SetError(txtNombre, "Ingrese un nombre");
+                    errorIcono.SetError(txtPrecioVenta, "Ingrese el precio de venta");
+                    errorIcono.SetError(txtStock, "Ingrese el stock");
+                }
+                else
+                {
+                    respuesta = NArticulo.Insertar(
+                        Convert.ToInt32(cboCategoria.SelectedValue), 
+                        txtCodigo.Text, 
+                        txtNombre.Text.Trim(), 
+                        Convert.ToDecimal(txtPrecioVenta.Text), 
+                        Convert.ToInt32(txtStock.Text), 
+                        txtDescripcion.Text.Trim(), 
+                        txtImagen.Text.Trim()
+                        );
+
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro insertado correctamente");
+                        if (txtImagen.Text != string.Empty)
+                        {
+                            rutaDestino = directorio + txtImagen.Text;
+                            File.Copy(rutaOrigen, rutaDestino);  
+                        }
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }
