@@ -19,6 +19,7 @@ namespace Sistema.Presentacion
         private string rutaOrigen;
         private string rutaDestino;
         private string directorio = @"E:\Documentos\dev\cursos\cursos\c#\ImSistema";
+        private string NombreAnt;
         public FrmArticulo()
         {
             InitializeComponent();
@@ -217,6 +218,98 @@ namespace Sistema.Presentacion
 
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void dtgListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Limpiar();
+                btnActualizar.Visible = true;
+                btnInsertar.Visible = false;
+                txtId.Text = Convert.ToString(dtgListado.CurrentRow.Cells["ID"].Value);
+                cboCategoria.SelectedValue = Convert.ToString(dtgListado.CurrentRow.Cells["idcategoria"].Value);
+                txtCodigo.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Codigo"].Value);
+                NombreAnt = Convert.ToString(dtgListado.CurrentRow.Cells["Nombre"].Value);
+                txtNombre.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Nombre"].Value);
+                txtPrecioVenta.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Precio_Venta"].Value);
+                txtStock.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Stock"].Value);
+                txtDescripcion.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Descripcion"].Value);
+                string imagen = Convert.ToString(dtgListado.CurrentRow.Cells["Imagen"].Value);
+                if (imagen != string.Empty)
+                {
+                    picImagen.Image = Image.FromFile(directorio + imagen);
+                    txtImagen.Text = imagen;
+                }
+                else
+                {
+                    picImagen.Image = null;
+                    txtImagen.Text = "";
+                }
+                tabGeneral.SelectedIndex = 1;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Seleccione desde la celda nombre." + ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (txtId.Text == string.Empty || cboCategoria.Text == string.Empty || txtNombre.Text == string.Empty || txtPrecioVenta.Text == string.Empty || txtStock.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(cboCategoria, "Ingrese una categoria");
+                    errorIcono.SetError(txtNombre, "Ingrese un nombre");
+                    errorIcono.SetError(txtPrecioVenta, "Ingrese el precio de venta");
+                    errorIcono.SetError(txtStock, "Ingrese el stock");
+                }
+                else
+                {
+                    respuesta = NArticulo.Actualizar(
+                        Convert.ToInt32(txtId.Text),
+                        Convert.ToInt32(cboCategoria.SelectedValue),
+                        txtCodigo.Text,
+                        NombreAnt,
+                        txtNombre.Text.Trim(),
+                        Convert.ToDecimal(txtPrecioVenta.Text),
+                        Convert.ToInt32(txtStock.Text),
+                        txtDescripcion.Text.Trim(),
+                        txtImagen.Text.Trim()
+                        );
+
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro actualizado correctamente");
+                        if (txtImagen.Text != string.Empty && rutaOrigen != string.Empty)
+                        {
+                            rutaDestino = directorio + txtImagen.Text;
+                            File.Copy(rutaOrigen, rutaDestino);
+                        }
+                        Listar();
+                        tabGeneral.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            tabGeneral.SelectedIndex = 0;
         }
     }
 }
