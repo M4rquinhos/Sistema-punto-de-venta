@@ -311,5 +311,146 @@ namespace Sistema.Presentacion
             Limpiar();
             tabGeneral.SelectedIndex = 0;
         }
+
+        private void dtgListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dtgListado.Columns["Seleccionar"].Index)
+            {
+                DataGridViewCheckBoxCell chkEliminar = (DataGridViewCheckBoxCell)dtgListado.Rows[e.RowIndex].Cells["Seleccionar"];
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+            }
+        }
+
+        private void chkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeleccionar.Checked)
+            {
+                dtgListado.Columns[0].Visible = true;
+                btnActivar.Visible = true;
+                btnDesactivar.Visible = true;
+                btnEliminar.Visible = true;
+            }
+            else
+            {
+                dtgListado.Columns[0].Visible = false;
+                btnActivar.Visible = false;
+                btnDesactivar.Visible = false;
+                btnEliminar.Visible = false;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Quieres eliminar el o los registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    int codigo;
+                    string respuesta = "";
+                    string imagen = "";
+                    foreach (DataGridViewRow row in dtgListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToInt32(row.Cells[1].Value);
+                            imagen = Convert.ToString(row.Cells[9].Value);
+                            respuesta = NArticulo.Eliminar(codigo);
+
+                            if (respuesta.Equals("OK"))
+                            {
+                                MensajeOk($"Se elimino el registro correctamente: {Convert.ToString(row.Cells[5].Value)} ");
+                                File.Delete(directorio + imagen);
+                            }
+                            else
+                            {
+                                MensajeError(respuesta);
+                            }
+                        }
+                    }
+                    Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnDesactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Quieres desactivar el o los registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    int codigo;
+                    string respuesta = "";
+                    foreach (DataGridViewRow row in dtgListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToInt32(row.Cells[1].Value);
+                            respuesta = NArticulo.Desactivar(codigo);
+
+                            if (respuesta.Equals("OK"))
+                            {
+                                MensajeOk($"Se desactivo el registro correctamente: {Convert.ToString(row.Cells[5].Value)} ");
+                            }
+                            else
+                            {
+                                MensajeError(respuesta);
+                            }
+                        }
+                    }
+                    Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Quieres Activar el o los registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    int codigo;
+                    string respuesta = "";
+                    foreach (DataGridViewRow row in dtgListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToInt32(row.Cells[1].Value);
+                            respuesta = NArticulo.Activar(codigo);
+
+                            if (respuesta.Equals("OK"))
+                            {
+                                MensajeOk($"Se activo el registro correctamente: {Convert.ToString(row.Cells[5].Value)} ");
+                            }
+                            else
+                            {
+                                MensajeError(respuesta);
+                            }
+                        }
+                    }
+                    Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
     }
 }
