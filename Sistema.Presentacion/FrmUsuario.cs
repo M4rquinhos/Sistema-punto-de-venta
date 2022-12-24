@@ -72,7 +72,11 @@ namespace Sistema.Presentacion
             txtBuscar.Clear();
             txtId.Clear();
             txtNombre.Clear();
-            txtDescripcion.Clear();
+            txtNumDoc.Clear();
+            txtDireccion.Clear();
+            txtEmail.Clear();
+            txtClave.Clear();
+            txtTelefono.Clear();
             btnInsertar.Visible = true;
             btnActualizar.Visible = false;
             errorIcono.Clear();
@@ -117,6 +121,49 @@ namespace Sistema.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Buscar();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if ( cboRol.Text == string.Empty || txtNombre.Text == string.Empty || txtEmail.Text == string.Empty || txtClave.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(cboRol, "Ingrese un rol");
+                    errorIcono.SetError(txtNombre, "Ingrese un nombre");
+                    errorIcono.SetError(txtEmail, "Ingrese un email");
+                    errorIcono.SetError(txtClave, "Ingrese la clave");
+                }
+                else
+                {
+                    respuesta = NUsuario.Insertar(
+                        Convert.ToInt32(cboRol.SelectedValue),
+                        txtNombre.Text.Trim(),
+                        cboTipoDoc.Text.Trim(),
+                        txtNumDoc.Text.Trim(),
+                        txtDireccion.Text.Trim(),
+                        txtTelefono.Text.Trim(),
+                        txtEmail.Text.Trim(),
+                        txtClave.Text.Trim()
+                        );
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro insertado correctamente");
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

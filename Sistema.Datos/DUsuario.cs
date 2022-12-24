@@ -103,7 +103,7 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("categoria_insertar", sqlCon);
+                SqlCommand comando = new SqlCommand("usuario_insertar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@idrol", SqlDbType.Int).Value = Obj.IdRol;
                 comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
