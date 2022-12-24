@@ -93,9 +93,25 @@ namespace Sistema.Presentacion
             MessageBox.Show(mensaje, "Sistemas de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void CargarRol()
+        {
+            try
+            {
+                cboRol.DataSource = NRol.Listar();
+                cboRol.ValueMember = "idrol";
+                cboRol.DisplayMember = "nombre";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
             Listar();
+            CargarRol();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

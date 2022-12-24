@@ -52,6 +52,8 @@ namespace Sistema.Presentacion
             this.dtgListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabGeneral = new System.Windows.Forms.TabControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboRol = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
@@ -65,7 +67,7 @@ namespace Sistema.Presentacion
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(124, 299);
+            this.btnActualizar.Location = new System.Drawing.Point(133, 483);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(154, 23);
             this.btnActualizar.TabIndex = 8;
@@ -75,7 +77,7 @@ namespace Sistema.Presentacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 241);
+            this.label3.Location = new System.Drawing.Point(130, 425);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 13);
             this.label3.TabIndex = 7;
@@ -83,7 +85,7 @@ namespace Sistema.Presentacion
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(284, 299);
+            this.btnCancelar.Location = new System.Drawing.Point(293, 483);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(139, 23);
             this.btnCancelar.TabIndex = 6;
@@ -92,7 +94,7 @@ namespace Sistema.Presentacion
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Location = new System.Drawing.Point(124, 299);
+            this.btnInsertar.Location = new System.Drawing.Point(133, 483);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(154, 23);
             this.btnInsertar.TabIndex = 5;
@@ -109,7 +111,7 @@ namespace Sistema.Presentacion
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(121, 127);
+            this.txtDescripcion.Location = new System.Drawing.Point(130, 311);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(302, 78);
@@ -117,7 +119,7 @@ namespace Sistema.Presentacion
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(121, 84);
+            this.txtNombre.Location = new System.Drawing.Point(130, 268);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(302, 20);
@@ -126,7 +128,7 @@ namespace Sistema.Presentacion
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 130);
+            this.label2.Location = new System.Drawing.Point(53, 314);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
@@ -134,6 +136,8 @@ namespace Sistema.Presentacion
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cboRol);
+            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btnActualizar);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.btnCancelar);
@@ -146,7 +150,7 @@ namespace Sistema.Presentacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(848, 471);
+            this.tabPage2.Size = new System.Drawing.Size(1047, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -154,7 +158,7 @@ namespace Sistema.Presentacion
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 87);
+            this.label1.Location = new System.Drawing.Point(53, 271);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
@@ -269,14 +273,31 @@ namespace Sistema.Presentacion
             this.tabGeneral.Location = new System.Drawing.Point(2, 2);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.SelectedIndex = 0;
-            this.tabGeneral.Size = new System.Drawing.Size(1019, 497);
+            this.tabGeneral.Size = new System.Drawing.Size(1055, 556);
             this.tabGeneral.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Rol(*)";
+            // 
+            // cboRol
+            // 
+            this.cboRol.FormattingEnabled = true;
+            this.cboRol.Location = new System.Drawing.Point(130, 116);
+            this.cboRol.Name = "cboRol";
+            this.cboRol.Size = new System.Drawing.Size(302, 21);
+            this.cboRol.TabIndex = 10;
             // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 506);
+            this.ClientSize = new System.Drawing.Size(1059, 561);
             this.Controls.Add(this.tabGeneral);
             this.Name = "FrmUsuario";
             this.Text = "Usuarios";
@@ -316,5 +337,7 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboRol;
+        private System.Windows.Forms.Label label4;
     }
 }
