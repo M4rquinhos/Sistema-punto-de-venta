@@ -328,6 +328,7 @@ namespace Sistema.Presentacion
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnDesactivar
             // 
@@ -337,6 +338,7 @@ namespace Sistema.Presentacion
             this.btnDesactivar.TabIndex = 6;
             this.btnDesactivar.Text = "Desactivar";
             this.btnDesactivar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // btnActivar
             // 
@@ -346,6 +348,7 @@ namespace Sistema.Presentacion
             this.btnActivar.TabIndex = 5;
             this.btnActivar.Text = "Activar";
             this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
             // 
             // chkSeleccionar
             // 
@@ -356,6 +359,7 @@ namespace Sistema.Presentacion
             this.chkSeleccionar.TabIndex = 4;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // btnBuscar
             // 
@@ -397,6 +401,7 @@ namespace Sistema.Presentacion
             this.dtgListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListado.Size = new System.Drawing.Size(1034, 345);
             this.dtgListado.TabIndex = 0;
+            this.dtgListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellContentClick);
             this.dtgListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellDoubleClick);
             // 
             // tabPage1
