@@ -13,6 +13,11 @@ namespace Sistema.Presentacion
     public partial class FrmPrincipal : Form
     {
         private int childFormNumber = 0;
+        public int idUsuario;
+        public int idRol;
+        public string nombre;
+        public string rol;
+        public bool estado;
 
         public FrmPrincipal()
         {
