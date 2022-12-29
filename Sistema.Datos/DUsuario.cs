@@ -64,6 +64,35 @@ namespace Sistema.Datos
             }
         }
 
+        public DataTable Login(string email, string clave)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("usuario_login", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+                comando.Parameters.Add("@clave", SqlDbType.VarChar).Value = clave;
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                return null;
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
+
         public string Existe(string valor)
         {
             string respuesta = "";
@@ -246,4 +275,5 @@ namespace Sistema.Datos
             return respuesta;
         }
     }
+
 }
