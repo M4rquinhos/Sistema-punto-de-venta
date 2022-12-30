@@ -125,7 +125,55 @@ namespace Sistema.Presentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            stBarraInf.Text = $"Desarrolldo por www.marquinos.com, Usuario: {nombre}";
+            MessageBox.Show($"Bienvenido: {nombre}", "Sistema Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //aquí podria ser un switch(?
+            if (rol.Equals("Administrador"))
+            {
+                mnuAlmacen.Enabled = true;
+                mnuIngresos.Enabled = true;
+                mnuVentas.Enabled = true;
+                mnuAccesos.Enabled = true;
+                mnuConsultas.Enabled = true;
+                tsCompras.Enabled = true;
+                tsVentas.Enabled = true;
+            }
+            else
+            {
+                if (rol.Equals("Vendedor"))
+                {
+                    mnuAlmacen.Enabled = false;
+                    mnuIngresos.Enabled = false;
+                    mnuVentas.Enabled = true;
+                    mnuAccesos.Enabled = false;
+                    mnuConsultas.Enabled = true;
+                    tsCompras.Enabled = false;
+                    tsVentas.Enabled = true;
+                }
+                else
+                {
+                    if (rol.Equals("Almacenista"))
+                    {
+                        mnuAlmacen.Enabled = true;
+                        mnuIngresos.Enabled = true;
+                        mnuVentas.Enabled = false;
+                        mnuAccesos.Enabled = false;
+                        mnuConsultas.Enabled = true;
+                        tsCompras.Enabled = true;
+                        tsVentas.Enabled = false;
+                    }
+                    else
+                    {
+                        mnuAlmacen.Enabled = false;
+                        mnuIngresos.Enabled = false;
+                        mnuVentas.Enabled = false;
+                        mnuAccesos.Enabled = false;
+                        mnuConsultas.Enabled = false;
+                        tsCompras.Enabled = false;
+                        tsVentas.Enabled = false;
+                    }
+                }
+            }
         }
 
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
