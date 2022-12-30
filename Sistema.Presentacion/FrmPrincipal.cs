@@ -189,5 +189,22 @@ namespace Sistema.Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult opcion;
+
+            opcion = MessageBox.Show("¿Deseas salir del sistema?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (opcion == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
