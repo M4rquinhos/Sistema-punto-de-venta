@@ -1,15 +1,15 @@
-﻿using Sistema.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sistema.Entidades;
 
 namespace Sistema.Datos
 {
-    public class DUsuario
+    public class DPersona
     {
         public DataTable Listar()
         {
@@ -19,7 +19,59 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion(); //Creando la conexion con la BD
-                SqlCommand comando = new SqlCommand("usuario_listar", sqlCon); //recibe que es lo que se quiere hacer (SP O QUERY)
+                SqlCommand comando = new SqlCommand("persona_listar", sqlCon); //recibe que es lo que se quiere hacer (SP O QUERY)
+                comando.CommandType = CommandType.StoredProcedure; //Se indica que es un SP
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
+        public DataTable ListarProveedores()
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion(); //Creando la conexion con la BD
+                SqlCommand comando = new SqlCommand("persona_listar_proveedores", sqlCon); //recibe que es lo que se quiere hacer (SP O QUERY)
+                comando.CommandType = CommandType.StoredProcedure; //Se indica que es un SP
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
+        public DataTable ListarClientes()
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion(); //Creando la conexion con la BD
+                SqlCommand comando = new SqlCommand("persona_listar_clientes", sqlCon); //recibe que es lo que se quiere hacer (SP O QUERY)
                 comando.CommandType = CommandType.StoredProcedure; //Se indica que es un SP
                 sqlCon.Open();
                 resultado = comando.ExecuteReader();
@@ -45,7 +97,7 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_buscar", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_buscar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
                 sqlCon.Open();
@@ -64,7 +116,7 @@ namespace Sistema.Datos
             }
         }
 
-        public DataTable Login(string email, string clave)
+        public DataTable BuscarProveedores(string valor)
         {
             SqlDataReader resultado;
             DataTable tabla = new DataTable();
@@ -72,10 +124,9 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_login", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_buscar_proveedores", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
-                comando.Parameters.Add("@clave", SqlDbType.VarChar).Value = clave;
+                comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
                 sqlCon.Open();
                 resultado = comando.ExecuteReader();
                 tabla.Load(resultado);
@@ -83,7 +134,34 @@ namespace Sistema.Datos
             }
             catch (Exception ex)
             {
-                return null;
+
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
+        public DataTable BuscarClientes(string valor)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("persona_buscar_clientes", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
@@ -99,7 +177,7 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_existe", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_existe", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
                 SqlParameter parExiste = new SqlParameter();
@@ -124,23 +202,22 @@ namespace Sistema.Datos
             return respuesta;
         }
 
-        public string Insertar(Usuario Obj)
+        public string Insertar(Persona Obj)
         {
             string respuesta = "";
             SqlConnection sqlCon = new SqlConnection();
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_insertar", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_insertar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@idrol", SqlDbType.Int).Value = Obj.IdRol;
+                comando.Parameters.Add("@tipo_persona", SqlDbType.VarChar).Value = Obj.TipoPersona;
                 comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                 comando.Parameters.Add("@tipo_documento", SqlDbType.VarChar).Value = Obj.TipoDocumento;
-                comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumDocumento;
+                comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento;
                 comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion;
                 comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email;
-                comando.Parameters.Add("@clave", SqlDbType.VarChar).Value = Obj.Clave;
                 sqlCon.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo insertar el registro";
                 return respuesta;
@@ -158,24 +235,24 @@ namespace Sistema.Datos
             return respuesta;
         }
 
-        public string Actualizar(Usuario Obj)
+        public string Actualizar(Persona Obj)
         {
             string respuesta = "";
             SqlConnection sqlCon = new SqlConnection();
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_actualizar", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_actualizar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = Obj.IdUsuario;
-                comando.Parameters.Add("@idrol", SqlDbType.Int).Value = Obj.IdRol;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = Obj.IdPersona;
+                comando.Parameters.Add("@tipo_persona", SqlDbType.VarChar).Value = Obj.TipoPersona;
                 comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                 comando.Parameters.Add("@tipo_documento", SqlDbType.VarChar).Value = Obj.TipoDocumento;
-                comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumDocumento;
+                comando.Parameters.Add("@num_documento", SqlDbType.VarChar).Value = Obj.NumeroDocumento;
                 comando.Parameters.Add("@direccion", SqlDbType.VarChar).Value = Obj.Direccion;
                 comando.Parameters.Add("@telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 comando.Parameters.Add("@email", SqlDbType.VarChar).Value = Obj.Email;
-                comando.Parameters.Add("@clave", SqlDbType.VarChar).Value = Obj.Clave;
                 sqlCon.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
                 return respuesta;
@@ -200,9 +277,9 @@ namespace Sistema.Datos
             try
             {
                 sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_eliminar", sqlCon);
+                SqlCommand comando = new SqlCommand("persona_eliminar", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = id;
+                comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = id;
                 sqlCon.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
                 return respuesta;
@@ -219,60 +296,5 @@ namespace Sistema.Datos
             }
             return respuesta;
         }
-
-        public string Activar(int id)
-        {
-            string respuesta = "";
-            SqlConnection sqlCon = new SqlConnection();
-            try
-            {
-                sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_activar", sqlCon);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = id;
-                sqlCon.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo activar el registro";
-                return respuesta;
-
-            }
-            catch (Exception ex)
-            {
-
-                respuesta = ex.Message;
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
-            }
-            return respuesta;
-        }
-
-        public string Desactivar(int id)
-        {
-            string respuesta = "";
-            SqlConnection sqlCon = new SqlConnection();
-            try
-            {
-                sqlCon = Conexion.GetInstancia().CrearConexion();
-                SqlCommand comando = new SqlCommand("usuario_desactivar", sqlCon);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = id;
-                sqlCon.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
-                return respuesta;
-
-            }
-            catch (Exception ex)
-            {
-
-                respuesta = ex.Message;
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
-            }
-            return respuesta;
-        }
     }
-
 }
