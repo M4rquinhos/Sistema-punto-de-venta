@@ -213,5 +213,12 @@ namespace Sistema.Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente frm = new FrmCliente();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
