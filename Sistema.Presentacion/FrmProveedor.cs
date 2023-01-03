@@ -64,7 +64,7 @@ namespace Sistema.Presentacion
             dtgListado.Columns[6].HeaderText = "Direccion";
             dtgListado.Columns[7].Width = 100;
             dtgListado.Columns[7].HeaderText = "Telefono";
-            dtgListado.Columns[8].Width = 120;//email
+            dtgListado.Columns[8].Width = 170;//email
         }
 
         private void Limpiar()
@@ -75,7 +75,6 @@ namespace Sistema.Presentacion
             txtNumDoc.Clear();
             txtDireccion.Clear();
             txtEmail.Clear();
-            txtClave.Clear();
             txtTelefono.Clear();
             btnInsertar.Visible = true;
             btnActualizar.Visible = false;
@@ -91,6 +90,11 @@ namespace Sistema.Presentacion
             MessageBox.Show(mensaje, "Sistemas de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void MensajeOk(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Sistemas de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
             Listar();
@@ -99,6 +103,45 @@ namespace Sistema.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Buscar();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (txtNombre.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(txtNombre, "Ingrese un nombre");
+                }
+                else
+                {
+                    respuesta = NPersona.Insertar(
+                        "Proveedor", //Tipo persona; es mejor declarar un variable.
+                        txtNombre.Text.Trim(),
+                        cboTipoDoc.Text.Trim(),
+                        txtNumDoc.Text.Trim(),
+                        txtDireccion.Text.Trim(),
+                        txtTelefono.Text.Trim(),
+                        txtEmail.Text.Trim());
+
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro insertado correctamente");
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

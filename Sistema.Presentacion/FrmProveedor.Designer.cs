@@ -30,7 +30,6 @@ namespace Sistema.Presentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProveedor));
             this.tabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -41,12 +40,8 @@ namespace Sistema.Presentacion
             this.dtgListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtClave = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtNumDoc = new System.Windows.Forms.TextBox();
@@ -55,8 +50,6 @@ namespace Sistema.Presentacion
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboRol = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -69,7 +62,6 @@ namespace Sistema.Presentacion
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,8 +159,9 @@ namespace Sistema.Presentacion
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.txtTelefono);
+            this.tabPage2.Controls.Add(this.txtEmail);
+            this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.txtDireccion);
             this.tabPage2.Controls.Add(this.txtNumDoc);
             this.tabPage2.Controls.Add(this.cboTipoDoc);
@@ -176,8 +169,6 @@ namespace Sistema.Presentacion
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.cboRol);
-            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btnActualizar);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.btnCancelar);
@@ -188,83 +179,44 @@ namespace Sistema.Presentacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1047, 530);
+            this.tabPage2.Size = new System.Drawing.Size(1058, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtClave);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(538, 83);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(473, 294);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Acceso";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 196);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(402, 65);
-            this.label2.TabIndex = 19;
-            this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // txtClave
-            // 
-            this.txtClave.Location = new System.Drawing.Point(70, 102);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(367, 20);
-            this.txtClave.TabIndex = 18;
-            // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(70, 37);
+            this.txtEmail.Location = new System.Drawing.Point(147, 296);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(367, 20);
+            this.txtEmail.Size = new System.Drawing.Size(302, 20);
             this.txtEmail.TabIndex = 17;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 40);
+            this.label9.Location = new System.Drawing.Point(44, 299);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 13);
+            this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 15;
-            this.label9.Text = "Email(*)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 105);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Clave(A)";
+            this.label9.Text = "Email";
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(147, 279);
+            this.txtTelefono.Location = new System.Drawing.Point(147, 251);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(154, 20);
             this.txtTelefono.TabIndex = 20;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(147, 241);
+            this.txtDireccion.Location = new System.Drawing.Point(147, 213);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(302, 20);
             this.txtDireccion.TabIndex = 19;
             // 
             // txtNumDoc
             // 
-            this.txtNumDoc.Location = new System.Drawing.Point(147, 201);
+            this.txtNumDoc.Location = new System.Drawing.Point(147, 173);
             this.txtNumDoc.Name = "txtNumDoc";
             this.txtNumDoc.Size = new System.Drawing.Size(154, 20);
             this.txtNumDoc.TabIndex = 18;
@@ -277,7 +229,7 @@ namespace Sistema.Presentacion
             "RUC",
             "CEDULA",
             "PASAPORTE"});
-            this.cboTipoDoc.Location = new System.Drawing.Point(147, 160);
+            this.cboTipoDoc.Location = new System.Drawing.Point(147, 132);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(154, 21);
             this.cboTipoDoc.TabIndex = 17;
@@ -286,7 +238,7 @@ namespace Sistema.Presentacion
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(44, 282);
+            this.label8.Location = new System.Drawing.Point(44, 254);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 14;
@@ -295,7 +247,7 @@ namespace Sistema.Presentacion
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(44, 244);
+            this.label7.Location = new System.Drawing.Point(44, 216);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 13;
@@ -304,7 +256,7 @@ namespace Sistema.Presentacion
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(44, 204);
+            this.label6.Location = new System.Drawing.Point(44, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 12;
@@ -313,34 +265,17 @@ namespace Sistema.Presentacion
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 163);
+            this.label5.Location = new System.Drawing.Point(44, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Tipo documento";
             // 
-            // cboRol
-            // 
-            this.cboRol.FormattingEnabled = true;
-            this.cboRol.Location = new System.Drawing.Point(147, 83);
-            this.cboRol.Name = "cboRol";
-            this.cboRol.Size = new System.Drawing.Size(302, 21);
-            this.cboRol.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 83);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Rol(*)";
-            // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(121, 484);
+            this.btnActualizar.Location = new System.Drawing.Point(150, 394);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(154, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(154, 28);
             this.btnActualizar.TabIndex = 8;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -356,21 +291,22 @@ namespace Sistema.Presentacion
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(281, 484);
+            this.btnCancelar.Location = new System.Drawing.Point(310, 360);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(139, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(139, 28);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Location = new System.Drawing.Point(121, 484);
+            this.btnInsertar.Location = new System.Drawing.Point(150, 360);
             this.btnInsertar.Name = "btnInsertar";
-            this.btnInsertar.Size = new System.Drawing.Size(154, 23);
+            this.btnInsertar.Size = new System.Drawing.Size(154, 28);
             this.btnInsertar.TabIndex = 5;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // txtId
             // 
@@ -382,7 +318,7 @@ namespace Sistema.Presentacion
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(147, 120);
+            this.txtNombre.Location = new System.Drawing.Point(147, 92);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(302, 20);
@@ -391,7 +327,7 @@ namespace Sistema.Presentacion
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 123);
+            this.label1.Location = new System.Drawing.Point(44, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
@@ -416,8 +352,6 @@ namespace Sistema.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.ResumeLayout(false);
 
@@ -435,12 +369,8 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.DataGridView dtgListado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtNumDoc;
@@ -449,8 +379,6 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboRol;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancelar;
