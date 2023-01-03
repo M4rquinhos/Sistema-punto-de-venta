@@ -215,5 +215,65 @@ namespace Sistema.Presentacion
             Limpiar();
             tabGeneral.SelectedIndex = 0;
         }
+
+        private void chkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeleccionar.Checked)
+            {
+                dtgListado.Columns[0].Visible = true;
+                btnEliminar.Visible = true;
+            }
+            else
+            {
+                dtgListado.Columns[0].Visible = false;
+                btnEliminar.Visible = false;
+            }
+        }
+
+        private void dtgListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dtgListado.Columns["Seleccionar"].Index)
+            {
+                DataGridViewCheckBoxCell chkEliminar = (DataGridViewCheckBoxCell)dtgListado.Rows[e.RowIndex].Cells["Seleccionar"];
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Quieres eliminar el o los registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    int codigo;
+                    string respuesta = "";
+                    foreach (DataGridViewRow row in dtgListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToInt32(row.Cells[1].Value);
+                            respuesta = NPersona.Eliminar(codigo);
+
+                            if (respuesta.Equals("OK"))
+                            {
+                                MensajeOk($"Se elimino el registro correctamente: {Convert.ToString(row.Cells[3].Value)} ");
+                            }
+                            else
+                            {
+                                MensajeError(respuesta);
+                            }
+                        }
+                    }
+                    Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
     }
 }
