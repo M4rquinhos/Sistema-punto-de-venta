@@ -13,6 +13,7 @@ namespace Sistema.Presentacion
 {
     public partial class FrmProveedor : Form
     {
+        private string nombreAnt;
         public FrmProveedor()
         {
             InitializeComponent();
@@ -142,6 +143,77 @@ namespace Sistema.Presentacion
 
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void dtgListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Limpiar();
+                btnActualizar.Visible = true;
+                btnInsertar.Visible = false;
+                txtId.Text = Convert.ToString(dtgListado.CurrentRow.Cells["ID"].Value);
+                nombreAnt = Convert.ToString(dtgListado.CurrentRow.Cells["Nombre"].Value);
+                txtNombre.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Nombre"].Value);
+                cboTipoDoc.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Tipo_Documento"].Value);
+                txtNumDoc.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Num_Documento"].Value);
+                txtDireccion.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Direccion"].Value);
+                txtTelefono.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Telefono"].Value);
+                txtEmail.Text = Convert.ToString(dtgListado.CurrentRow.Cells["Email"].Value);
+                tabGeneral.SelectedIndex = 1;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Seleccione desde la celda nombre | Error: {ex.Message + ex.StackTrace}");
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if ( txtId.Text == string.Empty || txtNombre.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(txtNombre, "Ingrese un nombre");
+                }
+                else
+                {
+                    respuesta = NPersona.Actualizar(
+                        Convert.ToInt32(txtId.Text),
+                        "Proveedor", //Tipo persona; es mejor declarar un variable.
+                        nombreAnt,
+                        txtNombre.Text.Trim(),
+                        cboTipoDoc.Text.Trim(),
+                        txtNumDoc.Text.Trim(),
+                        txtDireccion.Text.Trim(),
+                        txtTelefono.Text.Trim(),
+                        txtEmail.Text.Trim()
+                        );
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro actualizado correctamente");
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            tabGeneral.SelectedIndex = 0;
         }
     }
 }
