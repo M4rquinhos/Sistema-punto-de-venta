@@ -75,6 +75,7 @@ namespace Sistema.Presentacion
             btnEliminar.Visible = false;
             chkSeleccionar.Checked = false;
         }
+
         private void MensajeError(string mensaje)
         {
             MessageBox.Show(mensaje, "Sistemas de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
