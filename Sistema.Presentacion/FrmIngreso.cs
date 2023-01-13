@@ -136,5 +136,13 @@ namespace Sistema.Presentacion
         {
 
         }
+
+        private void btnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            FrmVista_ProveedorIngreso vista = new FrmVista_ProveedorIngreso();
+            vista.ShowDialog();
+            txtIdProveedor.Text = Convert.ToString(Variables.IdProveedor);
+            txtNombrProveedor.Text = Variables.NombreProveedor;
+        }
     }
 }
