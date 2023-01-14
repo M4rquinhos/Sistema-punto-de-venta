@@ -103,5 +103,11 @@ namespace Sistema.Negocio
             DArticulo datos = new DArticulo();
             return datos.Desactivar(id);
         }
+
+        public static DataTable BuscarCodigoBarras(string valor)
+        {
+            DArticulo datos = new DArticulo();
+            return datos.BuscarCodigoBarras(valor);
+        }
     }
 }

@@ -144,5 +144,48 @@ namespace Sistema.Presentacion
             txtIdProveedor.Text = Convert.ToString(Variables.IdProveedor);
             txtNombrProveedor.Text = Variables.NombreProveedor;
         }
+
+        private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    DataTable tabla = new DataTable();
+                    tabla = NArticulo.BuscarCodigoBarras(txtCodigo.Text.Trim());
+                    if (tabla.Rows.Count <= 0)
+                    {
+                        MensajeError($"No existe ningun articulo con el codigo {txtCodigo.Text} asignado");
+                    }
+                    else
+                    {
+                        //Agregar al detalle
+                        AgregarDetalle(
+                            Convert.ToInt32(tabla.Rows[0][0]),
+                            Convert.ToString(tabla.Rows[0][1]),
+                            Convert.ToString(tabla.Rows[0][2]),
+                            Convert.ToDecimal(tabla.Rows[0][3])
+                            );
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void AgregarDetalle(int idArticulo, string codigo, string nombre, decimal precio)
+        {
+            DataRow fila = dtDetalle.NewRow();
+            fila["idarticulo"] = idArticulo;
+            fila["codigo"] = codigo;
+            fila["articulo"] = nombre;
+            fila["cantidad"] = 1;
+            fila["precio"] = precio;
+            fila["importe"] = precio;
+            dtDetalle.Rows.Add(fila);
+        }
     }
 }

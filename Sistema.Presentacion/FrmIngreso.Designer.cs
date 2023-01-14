@@ -238,6 +238,7 @@ namespace Sistema.Presentacion
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(395, 20);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             // 
             // groupBox1
             // 
