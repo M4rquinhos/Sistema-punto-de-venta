@@ -194,14 +194,28 @@ namespace Sistema.Presentacion
 
         private void AgregarDetalle(int idArticulo, string codigo, string nombre, decimal precio)
         {
-            DataRow fila = dtDetalle.NewRow();
-            fila["idarticulo"] = idArticulo;
-            fila["codigo"] = codigo;
-            fila["articulo"] = nombre;
-            fila["cantidad"] = 1;
-            fila["precio"] = precio;
-            fila["importe"] = precio;
-            dtDetalle.Rows.Add(fila);
+            //Impedir que se agreguen articulos repetidos
+            bool agregar = true;
+            foreach (DataRow filaTemp in dtDetalle.Rows)
+            {
+                if (Convert.ToInt32(filaTemp["idarticulo"]) == idArticulo)
+                {
+                    agregar = false;
+                    MensajeError($"El articulo {nombre} ya ha sido agregado");
+                }
+            }
+
+            if (agregar)
+            {
+                DataRow fila = dtDetalle.NewRow();
+                fila["idarticulo"] = idArticulo;
+                fila["codigo"] = codigo;
+                fila["articulo"] = nombre;
+                fila["cantidad"] = 1;
+                fila["precio"] = precio;
+                fila["importe"] = precio;
+                dtDetalle.Rows.Add(fila);
+            }
         }
 
         private void btnVerArticulos_Click(object sender, EventArgs e)
