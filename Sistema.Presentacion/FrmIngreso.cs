@@ -121,6 +121,22 @@ namespace Sistema.Presentacion
             dtgDetalle.Columns[5].ReadOnly = true;
         }
 
+        private void FormatoArticulos()
+        {
+            dtgArticulos.Columns[1].Visible = false;
+            dtgArticulos.Columns[2].Width = 100;
+            dtgArticulos.Columns[2].HeaderText = "Categoria";
+            dtgArticulos.Columns[3].Width = 100;
+            dtgArticulos.Columns[3].HeaderText = "Codigo";
+            dtgArticulos.Columns[4].Width = 150;
+            dtgArticulos.Columns[5].Width = 100;
+            dtgArticulos.Columns[5].HeaderText = "Precio venta";
+            dtgArticulos.Columns[6].Width = 60;
+            dtgArticulos.Columns[7].Width = 200;
+            dtgArticulos.Columns[7].HeaderText = "Descripcion";
+            dtgArticulos.Columns[8].Width = 100;
+        }
+
         private void FrmIngreso_Load(object sender, EventArgs e)
         {
             Listar();
@@ -186,6 +202,43 @@ namespace Sistema.Presentacion
             fila["precio"] = precio;
             fila["importe"] = precio;
             dtDetalle.Rows.Add(fila);
+        }
+
+        private void btnVerArticulos_Click(object sender, EventArgs e)
+        {
+            panelArticulos.Visible = true;
+        }
+
+        private void btnCerrarArticulo_Click(object sender, EventArgs e)
+        {
+            panelArticulos.Visible = false;
+        }
+
+        private void btnFiltrarArticulos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgArticulos.DataSource = NArticulo.Buscar(txtBuscar.Text.Trim());
+                FormatoArticulos();
+                lblTotalArticulos.Text = $"Total registros: {Convert.ToString(dtgArticulos.Rows.Count)}";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void dtgArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idArticulo;
+            string codigo, nombre;
+            decimal precio;
+            idArticulo = Convert.ToInt32(dtgArticulos.CurrentRow.Cells["ID"].Value);
+            codigo = Convert.ToString(dtgArticulos.CurrentRow.Cells["Codigo"].Value);
+            nombre = Convert.ToString(dtgArticulos.CurrentRow.Cells["Nombre"].Value);
+            precio = Convert.ToDecimal(dtgArticulos.CurrentRow.Cells["Precio_Venta"].Value);
+            AgregarDetalle(idArticulo, codigo, nombre, precio);
         }
     }
 }

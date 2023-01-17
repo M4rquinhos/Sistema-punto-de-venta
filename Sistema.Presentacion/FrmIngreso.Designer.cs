@@ -45,7 +45,7 @@ namespace Sistema.Presentacion
             this.label8 = new System.Windows.Forms.Label();
             this.dtgDetalle = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnBuscarArticulo = new System.Windows.Forms.Button();
+            this.btnVerArticulos = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,6 +69,13 @@ namespace Sistema.Presentacion
             this.dtgListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabGeneral = new System.Windows.Forms.TabControl();
+            this.panelArticulos = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBuscarArticulo = new System.Windows.Forms.TextBox();
+            this.btnFiltrarArticulos = new System.Windows.Forms.Button();
+            this.btnCerrarArticulo = new System.Windows.Forms.Button();
+            this.dtgArticulos = new System.Windows.Forms.DataGridView();
+            this.lblTotalArticulos = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -77,6 +84,8 @@ namespace Sistema.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.panelArticulos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -128,13 +137,14 @@ namespace Sistema.Presentacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1054, 569);
+            this.tabPage2.Size = new System.Drawing.Size(1111, 569);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panelArticulos);
             this.groupBox2.Controls.Add(this.txtTotal);
             this.groupBox2.Controls.Add(this.txtTotalImpuesto);
             this.groupBox2.Controls.Add(this.label3);
@@ -144,7 +154,7 @@ namespace Sistema.Presentacion
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.dtgDetalle);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.btnBuscarArticulo);
+            this.groupBox2.Controls.Add(this.btnVerArticulos);
             this.groupBox2.Controls.Add(this.txtCodigo);
             this.groupBox2.Location = new System.Drawing.Point(6, 162);
             this.groupBox2.Name = "groupBox2";
@@ -223,14 +233,15 @@ namespace Sistema.Presentacion
             this.label7.TabIndex = 11;
             this.label7.Text = "Articulo";
             // 
-            // btnBuscarArticulo
+            // btnVerArticulos
             // 
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(486, 26);
-            this.btnBuscarArticulo.Name = "btnBuscarArticulo";
-            this.btnBuscarArticulo.Size = new System.Drawing.Size(85, 23);
-            this.btnBuscarArticulo.TabIndex = 10;
-            this.btnBuscarArticulo.Text = "Buscar";
-            this.btnBuscarArticulo.UseVisualStyleBackColor = true;
+            this.btnVerArticulos.Location = new System.Drawing.Point(486, 26);
+            this.btnVerArticulos.Name = "btnVerArticulos";
+            this.btnVerArticulos.Size = new System.Drawing.Size(85, 23);
+            this.btnVerArticulos.TabIndex = 10;
+            this.btnVerArticulos.Text = "Ver";
+            this.btnVerArticulos.UseVisualStyleBackColor = true;
+            this.btnVerArticulos.Click += new System.EventHandler(this.btnVerArticulos_Click);
             // 
             // txtCodigo
             // 
@@ -458,14 +469,90 @@ namespace Sistema.Presentacion
             this.tabGeneral.Location = new System.Drawing.Point(3, 3);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.SelectedIndex = 0;
-            this.tabGeneral.Size = new System.Drawing.Size(1062, 595);
+            this.tabGeneral.Size = new System.Drawing.Size(1119, 595);
             this.tabGeneral.TabIndex = 1;
+            // 
+            // panelArticulos
+            // 
+            this.panelArticulos.BackColor = System.Drawing.Color.Silver;
+            this.panelArticulos.Controls.Add(this.lblTotalArticulos);
+            this.panelArticulos.Controls.Add(this.dtgArticulos);
+            this.panelArticulos.Controls.Add(this.btnCerrarArticulo);
+            this.panelArticulos.Controls.Add(this.btnFiltrarArticulos);
+            this.panelArticulos.Controls.Add(this.txtBuscarArticulo);
+            this.panelArticulos.Controls.Add(this.label11);
+            this.panelArticulos.Location = new System.Drawing.Point(13, 42);
+            this.panelArticulos.Name = "panelArticulos";
+            this.panelArticulos.Size = new System.Drawing.Size(856, 320);
+            this.panelArticulos.TabIndex = 10;
+            this.panelArticulos.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Buscar";
+            // 
+            // txtBuscarArticulo
+            // 
+            this.txtBuscarArticulo.Location = new System.Drawing.Point(58, 22);
+            this.txtBuscarArticulo.Name = "txtBuscarArticulo";
+            this.txtBuscarArticulo.Size = new System.Drawing.Size(328, 20);
+            this.txtBuscarArticulo.TabIndex = 1;
+            // 
+            // btnFiltrarArticulos
+            // 
+            this.btnFiltrarArticulos.Location = new System.Drawing.Point(413, 20);
+            this.btnFiltrarArticulos.Name = "btnFiltrarArticulos";
+            this.btnFiltrarArticulos.Size = new System.Drawing.Size(85, 23);
+            this.btnFiltrarArticulos.TabIndex = 2;
+            this.btnFiltrarArticulos.Text = "Buscar";
+            this.btnFiltrarArticulos.UseVisualStyleBackColor = true;
+            this.btnFiltrarArticulos.Click += new System.EventHandler(this.btnFiltrarArticulos_Click);
+            // 
+            // btnCerrarArticulo
+            // 
+            this.btnCerrarArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarArticulo.ForeColor = System.Drawing.Color.Red;
+            this.btnCerrarArticulo.Location = new System.Drawing.Point(817, 8);
+            this.btnCerrarArticulo.Name = "btnCerrarArticulo";
+            this.btnCerrarArticulo.Size = new System.Drawing.Size(28, 25);
+            this.btnCerrarArticulo.TabIndex = 3;
+            this.btnCerrarArticulo.Text = "X";
+            this.btnCerrarArticulo.UseVisualStyleBackColor = true;
+            this.btnCerrarArticulo.Click += new System.EventHandler(this.btnCerrarArticulo_Click);
+            // 
+            // dtgArticulos
+            // 
+            this.dtgArticulos.AllowUserToAddRows = false;
+            this.dtgArticulos.AllowUserToDeleteRows = false;
+            this.dtgArticulos.AllowUserToOrderColumns = true;
+            this.dtgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgArticulos.Location = new System.Drawing.Point(12, 48);
+            this.dtgArticulos.Name = "dtgArticulos";
+            this.dtgArticulos.ReadOnly = true;
+            this.dtgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgArticulos.Size = new System.Drawing.Size(833, 229);
+            this.dtgArticulos.TabIndex = 4;
+            this.dtgArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgArticulos_CellDoubleClick);
+            // 
+            // lblTotalArticulos
+            // 
+            this.lblTotalArticulos.AutoSize = true;
+            this.lblTotalArticulos.Location = new System.Drawing.Point(664, 293);
+            this.lblTotalArticulos.Name = "lblTotalArticulos";
+            this.lblTotalArticulos.Size = new System.Drawing.Size(34, 13);
+            this.lblTotalArticulos.TabIndex = 5;
+            this.lblTotalArticulos.Text = "Total:";
             // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 601);
+            this.ClientSize = new System.Drawing.Size(1124, 601);
             this.Controls.Add(this.tabGeneral);
             this.Name = "FrmIngreso";
             this.Text = "Ingresos";
@@ -481,6 +568,9 @@ namespace Sistema.Presentacion
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabGeneral.ResumeLayout(false);
+            this.panelArticulos.ResumeLayout(false);
+            this.panelArticulos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgArticulos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -517,7 +607,7 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dtgDetalle;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnBuscarArticulo;
+        private System.Windows.Forms.Button btnVerArticulos;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -526,5 +616,12 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.TextBox txtNumComprobante;
         private System.Windows.Forms.TextBox txtSerieComprobante;
         private System.Windows.Forms.ComboBox cboComprobante;
+        private System.Windows.Forms.Panel panelArticulos;
+        private System.Windows.Forms.Label lblTotalArticulos;
+        private System.Windows.Forms.DataGridView dtgArticulos;
+        private System.Windows.Forms.Button btnCerrarArticulo;
+        private System.Windows.Forms.Button btnFiltrarArticulos;
+        private System.Windows.Forms.TextBox txtBuscarArticulo;
+        private System.Windows.Forms.Label label11;
     }
 }
