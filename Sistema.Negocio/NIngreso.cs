@@ -23,6 +23,12 @@ namespace Sistema.Negocio
             return datos.Buscar(valor);
         }
 
+        public static DataTable ListarDetalle(int idingreso)
+        {
+            DIngreso datos = new DIngreso();
+            return datos.ListarDetalle(idingreso);
+        }
+
         public static string Insertar(int idProveedor, int idUsuario, string tipoComprobante, string serieComprobante, string numComprobante, decimal impuesto, decimal total, DataTable detalle)
         {
             DIngreso datos = new DIngreso();

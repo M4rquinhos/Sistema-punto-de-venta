@@ -76,6 +76,15 @@ namespace Sistema.Presentacion
             this.dtgListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabGeneral = new System.Windows.Forms.TabControl();
+            this.PanelMostrarIngresoD = new System.Windows.Forms.Panel();
+            this.dtgMostrarDetalle = new System.Windows.Forms.DataGridView();
+            this.btnCerrarDetalle = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtSubTotalD = new System.Windows.Forms.TextBox();
+            this.txtTotalImpuestoD = new System.Windows.Forms.TextBox();
+            this.txtTotalD = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -86,6 +95,8 @@ namespace Sistema.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.PanelMostrarIngresoD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMostrarDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -110,6 +121,7 @@ namespace Sistema.Presentacion
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnInsertar
             // 
@@ -524,9 +536,11 @@ namespace Sistema.Presentacion
             this.dtgListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListado.Size = new System.Drawing.Size(1041, 345);
             this.dtgListado.TabIndex = 0;
+            this.dtgListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellDoubleClick);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.PanelMostrarIngresoD);
             this.tabPage1.Controls.Add(this.btnAnular);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
             this.tabPage1.Controls.Add(this.btnBuscar);
@@ -551,6 +565,98 @@ namespace Sistema.Presentacion
             this.tabGeneral.Size = new System.Drawing.Size(1119, 595);
             this.tabGeneral.TabIndex = 1;
             // 
+            // PanelMostrarIngresoD
+            // 
+            this.PanelMostrarIngresoD.BackColor = System.Drawing.Color.Silver;
+            this.PanelMostrarIngresoD.Controls.Add(this.txtTotalD);
+            this.PanelMostrarIngresoD.Controls.Add(this.txtTotalImpuestoD);
+            this.PanelMostrarIngresoD.Controls.Add(this.txtSubTotalD);
+            this.PanelMostrarIngresoD.Controls.Add(this.label14);
+            this.PanelMostrarIngresoD.Controls.Add(this.label13);
+            this.PanelMostrarIngresoD.Controls.Add(this.label12);
+            this.PanelMostrarIngresoD.Controls.Add(this.btnCerrarDetalle);
+            this.PanelMostrarIngresoD.Controls.Add(this.dtgMostrarDetalle);
+            this.PanelMostrarIngresoD.Location = new System.Drawing.Point(301, 167);
+            this.PanelMostrarIngresoD.Name = "PanelMostrarIngresoD";
+            this.PanelMostrarIngresoD.Size = new System.Drawing.Size(747, 387);
+            this.PanelMostrarIngresoD.TabIndex = 7;
+            this.PanelMostrarIngresoD.Visible = false;
+            // 
+            // dtgMostrarDetalle
+            // 
+            this.dtgMostrarDetalle.AllowUserToAddRows = false;
+            this.dtgMostrarDetalle.AllowUserToDeleteRows = false;
+            this.dtgMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgMostrarDetalle.Location = new System.Drawing.Point(15, 45);
+            this.dtgMostrarDetalle.Name = "dtgMostrarDetalle";
+            this.dtgMostrarDetalle.ReadOnly = true;
+            this.dtgMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgMostrarDetalle.Size = new System.Drawing.Size(720, 246);
+            this.dtgMostrarDetalle.TabIndex = 0;
+            // 
+            // btnCerrarDetalle
+            // 
+            this.btnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarDetalle.ForeColor = System.Drawing.Color.Red;
+            this.btnCerrarDetalle.Location = new System.Drawing.Point(698, 15);
+            this.btnCerrarDetalle.Name = "btnCerrarDetalle";
+            this.btnCerrarDetalle.Size = new System.Drawing.Size(27, 24);
+            this.btnCerrarDetalle.TabIndex = 1;
+            this.btnCerrarDetalle.Text = "X";
+            this.btnCerrarDetalle.UseVisualStyleBackColor = true;
+            this.btnCerrarDetalle.Click += new System.EventHandler(this.btnCerrarDetalle_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(567, 303);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Subtotal:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(567, 331);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Total impuesto:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(567, 360);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Total:";
+            // 
+            // txtSubTotalD
+            // 
+            this.txtSubTotalD.Enabled = false;
+            this.txtSubTotalD.Location = new System.Drawing.Point(654, 296);
+            this.txtSubTotalD.Name = "txtSubTotalD";
+            this.txtSubTotalD.Size = new System.Drawing.Size(81, 20);
+            this.txtSubTotalD.TabIndex = 5;
+            // 
+            // txtTotalImpuestoD
+            // 
+            this.txtTotalImpuestoD.Enabled = false;
+            this.txtTotalImpuestoD.Location = new System.Drawing.Point(654, 324);
+            this.txtTotalImpuestoD.Name = "txtTotalImpuestoD";
+            this.txtTotalImpuestoD.Size = new System.Drawing.Size(81, 20);
+            this.txtTotalImpuestoD.TabIndex = 6;
+            // 
+            // txtTotalD
+            // 
+            this.txtTotalD.Enabled = false;
+            this.txtTotalD.Location = new System.Drawing.Point(654, 353);
+            this.txtTotalD.Name = "txtTotalD";
+            this.txtTotalD.Size = new System.Drawing.Size(81, 20);
+            this.txtTotalD.TabIndex = 7;
+            // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -574,6 +680,9 @@ namespace Sistema.Presentacion
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabGeneral.ResumeLayout(false);
+            this.PanelMostrarIngresoD.ResumeLayout(false);
+            this.PanelMostrarIngresoD.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMostrarDetalle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -626,5 +735,14 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Button btnFiltrarArticulos;
         private System.Windows.Forms.TextBox txtBuscarArticulo;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel PanelMostrarIngresoD;
+        private System.Windows.Forms.TextBox txtTotalD;
+        private System.Windows.Forms.TextBox txtTotalImpuestoD;
+        private System.Windows.Forms.TextBox txtSubTotalD;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnCerrarDetalle;
+        private System.Windows.Forms.DataGridView dtgMostrarDetalle;
     }
 }

@@ -64,6 +64,33 @@ namespace Sistema.Datos
             }
         }
 
+        public DataTable ListarDetalle(int idingreso)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("ingreso_listar_detalle", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idingreso", SqlDbType.Int).Value = idingreso;
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                return null;
+                throw ex;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+
         public string Insertar(Ingreso Obj)
         {
             string respuesta = "";
