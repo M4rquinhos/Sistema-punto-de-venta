@@ -75,8 +75,15 @@ namespace Sistema.Presentacion
         {
             txtBuscar.Clear();
             txtId.Clear();
-            btnInsertar.Visible = true;
-            errorIcono.Clear();
+            txtCodigo.Clear();
+            txtIdProveedor.Clear();
+            txtNombrProveedor.Clear();
+            txtSerieComprobante.Clear();
+            txtNumComprobante.Clear();
+            dtDetalle.Clear();
+            txtSubTotal.Text = "0.00";
+            txtTotalImpuesto.Text = "0.00";
+            txtTotal.Text = "0.00";
 
             dtgListado.Columns[0].Visible = false;
             btnAnular.Visible = false;
@@ -291,6 +298,49 @@ namespace Sistema.Presentacion
         private void dtgDetalle_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             CalcularTotales();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (txtIdProveedor.Text == string.Empty || txtImpuesto.Text ==  string.Empty || txtNumComprobante.Text == string.Empty || dtDetalle.Rows.Count == 0)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(txtIdProveedor, "Seleccione un proveedor");
+                    errorIcono.SetError(txtImpuesto, "Ingrese un impuesto");
+                    errorIcono.SetError(dtgDetalle, "Ingrese al menos un detalle");
+                }
+                else
+                {
+                    respuesta = NIngreso.Insertar(
+                        Convert.ToInt32(txtIdProveedor.Text),
+                        Variables.IdUsuario,
+                        cboComprobante.Text.Trim(),
+                        txtSerieComprobante.Text.Trim(),
+                        txtNumComprobante.Text.Trim(),
+                        Convert.ToDecimal(txtImpuesto.Text),
+                        Convert.ToDecimal(txtTotal.Text),
+                        dtDetalle
+                        );
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro insertado correctamente");
+                        Limpiar();
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

@@ -78,12 +78,12 @@ namespace Sistema.Datos
                 comando.Parameters.Add("@tipo_comprobante", SqlDbType.VarChar).Value = Obj.TipoComprobante;
                 comando.Parameters.Add("@serie_comprobante", SqlDbType.VarChar).Value = Obj.SerieComprobante;
                 comando.Parameters.Add("@num_comprobante", SqlDbType.VarChar).Value = Obj.NumComprobante;
-                comando.Parameters.Add("@ipuesto", SqlDbType.VarChar).Value = Obj.Impuesto;
+                comando.Parameters.Add("@impuesto", SqlDbType.VarChar).Value = Obj.Impuesto;
                 comando.Parameters.Add("@total", SqlDbType.VarChar).Value = Obj.Total;
                 comando.Parameters.Add("@detalle", SqlDbType.Structured).Value = Obj.Detalles;
                 sqlCon.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo insertar el registro";
-                return respuesta;
+                comando.ExecuteNonQuery();
+                respuesta = "OK";
 
             }
             catch (Exception ex)

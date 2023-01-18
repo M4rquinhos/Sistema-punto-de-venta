@@ -119,6 +119,7 @@ namespace Sistema.Presentacion
             this.btnInsertar.TabIndex = 5;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // txtId
             // 
@@ -172,7 +173,7 @@ namespace Sistema.Presentacion
             this.panelArticulos.Controls.Add(this.btnFiltrarArticulos);
             this.panelArticulos.Controls.Add(this.txtBuscarArticulo);
             this.panelArticulos.Controls.Add(this.label11);
-            this.panelArticulos.Location = new System.Drawing.Point(13, 91);
+            this.panelArticulos.Location = new System.Drawing.Point(13, 42);
             this.panelArticulos.Name = "panelArticulos";
             this.panelArticulos.Size = new System.Drawing.Size(856, 320);
             this.panelArticulos.TabIndex = 10;
