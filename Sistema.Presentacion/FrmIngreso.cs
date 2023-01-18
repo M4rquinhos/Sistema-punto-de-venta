@@ -223,10 +223,19 @@ namespace Sistema.Presentacion
         {
             decimal total = 0, subtotal = 0;
 
-            foreach (DataRow filaTemp in dtDetalle.Rows)
+            if (dtDetalle.Rows.Count == 0)
             {
-                total += Convert.ToDecimal(filaTemp["importe"]);
+                total = 0;
             }
+            else
+            {
+
+                foreach (DataRow filaTemp in dtDetalle.Rows)
+                {
+                    total += Convert.ToDecimal(filaTemp["importe"]);
+                }
+            }
+
             subtotal = total / (1 + Convert.ToDecimal(txtImpuesto.Text));
             txtTotal.Text = total.ToString("#0.00#");
             txtSubTotal.Text = subtotal.ToString("#0.00#");
@@ -276,6 +285,11 @@ namespace Sistema.Presentacion
             decimal precio = Convert.ToDecimal(fila["precio"]);
             int cantidad = Convert.ToInt32(fila["cantidad"]);
             fila["importe"] = precio * cantidad;
+            CalcularTotales();
+        }
+
+        private void dtgDetalle_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
             CalcularTotales();
         }
     }

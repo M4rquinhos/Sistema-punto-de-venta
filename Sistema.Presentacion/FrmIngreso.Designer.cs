@@ -172,7 +172,7 @@ namespace Sistema.Presentacion
             this.panelArticulos.Controls.Add(this.btnFiltrarArticulos);
             this.panelArticulos.Controls.Add(this.txtBuscarArticulo);
             this.panelArticulos.Controls.Add(this.label11);
-            this.panelArticulos.Location = new System.Drawing.Point(23, 42);
+            this.panelArticulos.Location = new System.Drawing.Point(13, 91);
             this.panelArticulos.Name = "panelArticulos";
             this.panelArticulos.Size = new System.Drawing.Size(856, 320);
             this.panelArticulos.TabIndex = 10;
@@ -300,6 +300,7 @@ namespace Sistema.Presentacion
             this.dtgDetalle.Size = new System.Drawing.Size(835, 183);
             this.dtgDetalle.TabIndex = 12;
             this.dtgDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDetalle_CellEndEdit);
+            this.dtgDetalle.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dtgDetalle_UserDeletedRow);
             // 
             // label7
             // 
