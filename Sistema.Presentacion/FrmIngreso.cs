@@ -215,7 +215,22 @@ namespace Sistema.Presentacion
                 fila["precio"] = precio;
                 fila["importe"] = precio;
                 dtDetalle.Rows.Add(fila);
+                CalcularTotales();
             }
+        }
+
+        private void CalcularTotales()
+        {
+            decimal total = 0, subtotal = 0;
+
+            foreach (DataRow filaTemp in dtDetalle.Rows)
+            {
+                total += Convert.ToDecimal(filaTemp["importe"]);
+            }
+            subtotal = total / (1 + Convert.ToDecimal(txtImpuesto.Text));
+            txtTotal.Text = total.ToString("#0.00#");
+            txtSubTotal.Text = subtotal.ToString("#0.00#");
+            txtTotalImpuesto.Text = (total - subtotal).ToString("#0.00#");
         }
 
         private void btnVerArticulos_Click(object sender, EventArgs e)
@@ -253,6 +268,15 @@ namespace Sistema.Presentacion
             nombre = Convert.ToString(dtgArticulos.CurrentRow.Cells["Nombre"].Value);
             precio = Convert.ToDecimal(dtgArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             AgregarDetalle(idArticulo, codigo, nombre, precio);
+        }
+
+        private void dtgDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow fila = (DataRow)dtDetalle.Rows[e.RowIndex];
+            decimal precio = Convert.ToDecimal(fila["precio"]);
+            int cantidad = Convert.ToInt32(fila["cantidad"]);
+            fila["importe"] = precio * cantidad;
+            CalcularTotales();
         }
     }
 }
