@@ -136,8 +136,8 @@ namespace Sistema.Datos
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@idingreso", SqlDbType.Int).Value = id;
                 sqlCon.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo anular el registro";
-                return respuesta;
+                comando.ExecuteNonQuery();
+                respuesta = "OK";
 
             }
             catch (Exception ex)
