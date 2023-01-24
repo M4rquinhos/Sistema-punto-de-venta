@@ -56,9 +56,9 @@ namespace Sistema.Presentacion
             this.txtNumComprobante = new System.Windows.Forms.TextBox();
             this.txtSerieComprobante = new System.Windows.Forms.TextBox();
             this.cboComprobante = new System.Windows.Forms.ComboBox();
-            this.btnBuscarProveedor = new System.Windows.Forms.Button();
-            this.txtNombrProveedor = new System.Windows.Forms.TextBox();
-            this.txtIdProveedor = new System.Windows.Forms.TextBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -307,9 +307,9 @@ namespace Sistema.Presentacion
             this.groupBox1.Controls.Add(this.txtNumComprobante);
             this.groupBox1.Controls.Add(this.txtSerieComprobante);
             this.groupBox1.Controls.Add(this.cboComprobante);
-            this.groupBox1.Controls.Add(this.btnBuscarProveedor);
-            this.groupBox1.Controls.Add(this.txtNombrProveedor);
-            this.groupBox1.Controls.Add(this.txtIdProveedor);
+            this.groupBox1.Controls.Add(this.btnBuscarCliente);
+            this.groupBox1.Controls.Add(this.txtNombreCliente);
+            this.groupBox1.Controls.Add(this.txtIdCliente);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtId);
@@ -365,30 +365,31 @@ namespace Sistema.Presentacion
             this.cboComprobante.TabIndex = 10;
             this.cboComprobante.Text = "FACTURA";
             // 
-            // btnBuscarProveedor
+            // btnBuscarCliente
             // 
-            this.btnBuscarProveedor.Location = new System.Drawing.Point(486, 42);
-            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
-            this.btnBuscarProveedor.Size = new System.Drawing.Size(85, 23);
-            this.btnBuscarProveedor.TabIndex = 9;
-            this.btnBuscarProveedor.Text = "Buscar";
-            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(486, 42);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(85, 23);
+            this.btnBuscarCliente.TabIndex = 9;
+            this.btnBuscarCliente.Text = "Buscar";
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
-            // txtNombrProveedor
+            // txtNombreCliente
             // 
-            this.txtNombrProveedor.Enabled = false;
-            this.txtNombrProveedor.Location = new System.Drawing.Point(221, 44);
-            this.txtNombrProveedor.Name = "txtNombrProveedor";
-            this.txtNombrProveedor.Size = new System.Drawing.Size(259, 20);
-            this.txtNombrProveedor.TabIndex = 8;
+            this.txtNombreCliente.Enabled = false;
+            this.txtNombreCliente.Location = new System.Drawing.Point(221, 44);
+            this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.Size = new System.Drawing.Size(259, 20);
+            this.txtNombreCliente.TabIndex = 8;
             // 
-            // txtIdProveedor
+            // txtIdCliente
             // 
-            this.txtIdProveedor.Enabled = false;
-            this.txtIdProveedor.Location = new System.Drawing.Point(85, 44);
-            this.txtIdProveedor.Name = "txtIdProveedor";
-            this.txtIdProveedor.Size = new System.Drawing.Size(120, 20);
-            this.txtIdProveedor.TabIndex = 7;
+            this.txtIdCliente.Enabled = false;
+            this.txtIdCliente.Location = new System.Drawing.Point(85, 44);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(120, 20);
+            this.txtIdCliente.TabIndex = 7;
             // 
             // label2
             // 
@@ -404,9 +405,9 @@ namespace Sistema.Presentacion
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Proveedor(*)";
+            this.label1.Text = "Cliente(*)";
             // 
             // txtId
             // 
@@ -702,9 +703,9 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.TextBox txtNumComprobante;
         private System.Windows.Forms.TextBox txtSerieComprobante;
         private System.Windows.Forms.ComboBox cboComprobante;
-        private System.Windows.Forms.Button btnBuscarProveedor;
-        private System.Windows.Forms.TextBox txtNombrProveedor;
-        private System.Windows.Forms.TextBox txtIdProveedor;
+        private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.TextBox txtNombreCliente;
+        private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtId;

@@ -75,8 +75,8 @@ namespace Sistema.Presentacion
             txtBuscar.Clear();
             txtId.Clear();
             txtCodigo.Clear();
-            txtIdProveedor.Clear();
-            txtNombrProveedor.Clear();
+            txtIdCliente.Clear();
+            txtNombreCliente.Clear();
             txtSerieComprobante.Clear();
             txtNumComprobante.Clear();
             dtDetalle.Clear();
@@ -107,6 +107,14 @@ namespace Sistema.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Buscar();
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            FrmVista_ClienteVenta vista = new FrmVista_ClienteVenta();
+            vista.ShowDialog();
+            txtIdCliente.Text = Convert.ToString(Variables.IdCliente);
+            txtNombreCliente.Text = Variables.NombreCliente;
         }
     }
 }
