@@ -105,6 +105,7 @@ namespace Sistema.Presentacion
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(395, 20);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             // 
             // label6
             // 
@@ -498,6 +499,7 @@ namespace Sistema.Presentacion
             this.dtgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgArticulos.Size = new System.Drawing.Size(833, 229);
             this.dtgArticulos.TabIndex = 4;
+            this.dtgArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgArticulos_CellDoubleClick);
             // 
             // btnCerrarArticulo
             // 
@@ -509,6 +511,7 @@ namespace Sistema.Presentacion
             this.btnCerrarArticulo.TabIndex = 3;
             this.btnCerrarArticulo.Text = "X";
             this.btnCerrarArticulo.UseVisualStyleBackColor = true;
+            this.btnCerrarArticulo.Click += new System.EventHandler(this.btnCerrarArticulo_Click);
             // 
             // btnFiltrarArticulos
             // 
@@ -518,6 +521,7 @@ namespace Sistema.Presentacion
             this.btnFiltrarArticulos.TabIndex = 2;
             this.btnFiltrarArticulos.Text = "Buscar";
             this.btnFiltrarArticulos.UseVisualStyleBackColor = true;
+            this.btnFiltrarArticulos.Click += new System.EventHandler(this.btnFiltrarArticulos_Click);
             // 
             // txtBuscarArticulo
             // 
@@ -622,6 +626,7 @@ namespace Sistema.Presentacion
             this.btnVerArticulos.TabIndex = 10;
             this.btnVerArticulos.Text = "Ver";
             this.btnVerArticulos.UseVisualStyleBackColor = true;
+            this.btnVerArticulos.Click += new System.EventHandler(this.btnVerArticulos_Click);
             // 
             // btnCancelar
             // 

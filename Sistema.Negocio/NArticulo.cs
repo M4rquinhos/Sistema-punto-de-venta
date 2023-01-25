@@ -23,6 +23,12 @@ namespace Sistema.Negocio
             return datos.Buscar(valor);
         }
 
+        public static DataTable BuscarVenta(string valor)
+        {
+            DArticulo datos = new DArticulo();
+            return datos.BuscarVenta(valor);
+        }
+
         public static string Insertar(int idcategoria, string codigo, string nombre, decimal precioVenta, int stock, string descripcion, string imagen)
         {
             DArticulo datos = new DArticulo();
@@ -108,6 +114,12 @@ namespace Sistema.Negocio
         {
             DArticulo datos = new DArticulo();
             return datos.BuscarCodigoBarras(valor);
+        }
+
+        public static DataTable BuscarCodigoBarrasVenta(string valor)
+        {
+            DArticulo datos = new DArticulo();
+            return datos.BuscarCodigoBarrasVenta(valor);
         }
     }
 }
