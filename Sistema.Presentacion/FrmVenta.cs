@@ -291,5 +291,23 @@ namespace Sistema.Presentacion
             precio = Convert.ToDecimal(dtgArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             AgregarDetalle(idArticulo, codigo, nombre, stock, precio);
         }
+
+        private void dtgDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow fila = (DataRow)dtDetalle.Rows[e.RowIndex];
+            string articulo = Convert.ToString(fila["articulo"]);
+            int cantidad = Convert.ToInt32(fila["cantidad"]);
+            int stock = Convert.ToInt32(fila["stock"]);
+            decimal precio = Convert.ToDecimal(fila["precio"]);
+            decimal descuento = Convert.ToDecimal(fila["descuento"]);
+            if (cantidad > stock)
+            {
+                cantidad = stock;
+                MensajeError($"La cantidad de venta del articulo {articulo} supera el stock disponible {stock}");
+                fila["cantidad"] = cantidad;
+            }
+            fila["importe"] = (precio * cantidad) - descuento;
+            CalcularTotales();
+        }
     }
 }
