@@ -309,5 +309,54 @@ namespace Sistema.Presentacion
             fila["importe"] = (precio * cantidad) - descuento;
             CalcularTotales();
         }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (txtIdCliente.Text == string.Empty || txtImpuesto.Text == string.Empty || txtNumComprobante.Text == string.Empty || dtDetalle.Rows.Count == 0)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorIcono.SetError(txtIdCliente, "Seleccione un cliente");
+                    errorIcono.SetError(txtImpuesto, "Ingrese un impuesto");
+                    errorIcono.SetError(dtgDetalle, "Ingrese al menos un detalle");
+                }
+                else
+                {
+                    respuesta = NVenta.Insertar(
+                        Convert.ToInt32(txtIdCliente.Text),
+                        Variables.IdUsuario,
+                        cboComprobante.Text.Trim(),
+                        txtSerieComprobante.Text.Trim(),
+                        txtNumComprobante.Text.Trim(),
+                        Convert.ToDecimal(txtImpuesto.Text),
+                        Convert.ToDecimal(txtTotal.Text),
+                        dtDetalle
+                        );
+                    if (respuesta.Equals("OK"))
+                    {
+                        MensajeOk("Registro insertado correctamente");
+                        Limpiar();
+                        Listar();
+                    }
+                    else
+                    {
+                        MensajeError(respuesta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            tabGeneral.SelectedIndex = 0;
+        }
     }
 }
