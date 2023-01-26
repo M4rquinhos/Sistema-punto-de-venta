@@ -231,6 +231,7 @@ namespace Sistema.Presentacion
             this.btnAnular.TabIndex = 6;
             this.btnAnular.Text = "Anular";
             this.btnAnular.UseVisualStyleBackColor = true;
+            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
             // chkSeleccionar
             // 
@@ -241,6 +242,7 @@ namespace Sistema.Presentacion
             this.chkSeleccionar.TabIndex = 4;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // btnBuscar
             // 
@@ -282,6 +284,7 @@ namespace Sistema.Presentacion
             this.dtgListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListado.Size = new System.Drawing.Size(1041, 345);
             this.dtgListado.TabIndex = 0;
+            this.dtgListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellContentClick);
             this.dtgListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellDoubleClick);
             // 
             // tabPage1
