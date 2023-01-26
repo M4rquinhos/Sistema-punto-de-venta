@@ -35,7 +35,7 @@ namespace Sistema.Presentacion
             this.label5 = new System.Windows.Forms.Label();
             this.dtgMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PanelMostrarIngresoD = new System.Windows.Forms.Panel();
+            this.PanelMostrarVenta = new System.Windows.Forms.Panel();
             this.txtTotalD = new System.Windows.Forms.TextBox();
             this.txtTotalImpuestoD = new System.Windows.Forms.TextBox();
             this.txtSubTotalD = new System.Windows.Forms.TextBox();
@@ -86,7 +86,7 @@ namespace Sistema.Presentacion
             this.btnInsertar = new System.Windows.Forms.Button();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgMostrarDetalle)).BeginInit();
-            this.PanelMostrarIngresoD.SuspendLayout();
+            this.PanelMostrarVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,22 +143,22 @@ namespace Sistema.Presentacion
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
             // 
-            // PanelMostrarIngresoD
+            // PanelMostrarVenta
             // 
-            this.PanelMostrarIngresoD.BackColor = System.Drawing.Color.Silver;
-            this.PanelMostrarIngresoD.Controls.Add(this.txtTotalD);
-            this.PanelMostrarIngresoD.Controls.Add(this.txtTotalImpuestoD);
-            this.PanelMostrarIngresoD.Controls.Add(this.txtSubTotalD);
-            this.PanelMostrarIngresoD.Controls.Add(this.label14);
-            this.PanelMostrarIngresoD.Controls.Add(this.label13);
-            this.PanelMostrarIngresoD.Controls.Add(this.label12);
-            this.PanelMostrarIngresoD.Controls.Add(this.btnCerrarDetalle);
-            this.PanelMostrarIngresoD.Controls.Add(this.dtgMostrarDetalle);
-            this.PanelMostrarIngresoD.Location = new System.Drawing.Point(301, 167);
-            this.PanelMostrarIngresoD.Name = "PanelMostrarIngresoD";
-            this.PanelMostrarIngresoD.Size = new System.Drawing.Size(747, 387);
-            this.PanelMostrarIngresoD.TabIndex = 7;
-            this.PanelMostrarIngresoD.Visible = false;
+            this.PanelMostrarVenta.BackColor = System.Drawing.Color.Silver;
+            this.PanelMostrarVenta.Controls.Add(this.txtTotalD);
+            this.PanelMostrarVenta.Controls.Add(this.txtTotalImpuestoD);
+            this.PanelMostrarVenta.Controls.Add(this.txtSubTotalD);
+            this.PanelMostrarVenta.Controls.Add(this.label14);
+            this.PanelMostrarVenta.Controls.Add(this.label13);
+            this.PanelMostrarVenta.Controls.Add(this.label12);
+            this.PanelMostrarVenta.Controls.Add(this.btnCerrarDetalle);
+            this.PanelMostrarVenta.Controls.Add(this.dtgMostrarDetalle);
+            this.PanelMostrarVenta.Location = new System.Drawing.Point(301, 167);
+            this.PanelMostrarVenta.Name = "PanelMostrarVenta";
+            this.PanelMostrarVenta.Size = new System.Drawing.Size(747, 387);
+            this.PanelMostrarVenta.TabIndex = 7;
+            this.PanelMostrarVenta.Visible = false;
             // 
             // txtTotalD
             // 
@@ -221,6 +221,7 @@ namespace Sistema.Presentacion
             this.btnCerrarDetalle.TabIndex = 1;
             this.btnCerrarDetalle.Text = "X";
             this.btnCerrarDetalle.UseVisualStyleBackColor = true;
+            this.btnCerrarDetalle.Click += new System.EventHandler(this.btnCerrarDetalle_Click);
             // 
             // btnAnular
             // 
@@ -281,10 +282,11 @@ namespace Sistema.Presentacion
             this.dtgListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListado.Size = new System.Drawing.Size(1041, 345);
             this.dtgListado.TabIndex = 0;
+            this.dtgListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListado_CellDoubleClick);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.PanelMostrarIngresoD);
+            this.tabPage1.Controls.Add(this.PanelMostrarVenta);
             this.tabPage1.Controls.Add(this.btnAnular);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
             this.tabPage1.Controls.Add(this.btnBuscar);
@@ -663,8 +665,8 @@ namespace Sistema.Presentacion
             this.Text = "Ventas";
             this.Load += new System.EventHandler(this.FrmVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgMostrarDetalle)).EndInit();
-            this.PanelMostrarIngresoD.ResumeLayout(false);
-            this.PanelMostrarIngresoD.PerformLayout();
+            this.PanelMostrarVenta.ResumeLayout(false);
+            this.PanelMostrarVenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -690,7 +692,7 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dtgMostrarDetalle;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.Panel PanelMostrarIngresoD;
+        private System.Windows.Forms.Panel PanelMostrarVenta;
         private System.Windows.Forms.TextBox txtTotalD;
         private System.Windows.Forms.TextBox txtTotalImpuestoD;
         private System.Windows.Forms.TextBox txtSubTotalD;

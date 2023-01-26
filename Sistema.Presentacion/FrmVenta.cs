@@ -358,5 +358,33 @@ namespace Sistema.Presentacion
             Limpiar();
             tabGeneral.SelectedIndex = 0;
         }
+
+        private void dtgListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dtgMostrarDetalle.DataSource = NVenta.ListarDetalle(
+                    Convert.ToInt32(dtgListado.CurrentRow.Cells["ID"].Value)
+                );
+                decimal total, subtotal;
+                decimal impuesto = Convert.ToDecimal(dtgListado.CurrentRow.Cells["Impuesto"].Value);
+                total = Convert.ToDecimal(dtgListado.CurrentRow.Cells["Total"].Value);
+                subtotal = total / (1 + impuesto);
+                txtSubTotalD.Text = subtotal.ToString("#0.00#");
+                txtTotalD.Text = total.ToString("#0.00#");
+                txtTotalImpuestoD.Text = (total - subtotal).ToString("#0.00#");
+                PanelMostrarVenta.Visible = true;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnCerrarDetalle_Click(object sender, EventArgs e)
+        {
+            PanelMostrarVenta.Visible = false;
+        }
     }
 }
