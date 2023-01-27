@@ -40,6 +40,10 @@ namespace Sistema.Presentacion
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlcodigo = new System.Windows.Forms.Panel();
             this.btnGuardarCod = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
@@ -63,10 +67,7 @@ namespace Sistema.Presentacion
             this.dtgListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabGeneral = new System.Windows.Forms.TabControl();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
-            this.txtStock = new System.Windows.Forms.TextBox();
+            this.btnReporte = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
@@ -184,6 +185,38 @@ namespace Sistema.Presentacion
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(143, 407);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(146, 20);
+            this.txtStock.TabIndex = 23;
+            // 
+            // txtPrecioVenta
+            // 
+            this.txtPrecioVenta.Location = new System.Drawing.Point(144, 365);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(145, 20);
+            this.txtPrecioVenta.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(50, 410);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Stock(*)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(50, 368);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Precio de venta(*)";
             // 
             // pnlcodigo
             // 
@@ -383,6 +416,7 @@ namespace Sistema.Presentacion
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnReporte);
             this.tabPage1.Controls.Add(this.btnEliminar);
             this.tabPage1.Controls.Add(this.btnDesactivar);
             this.tabPage1.Controls.Add(this.btnActivar);
@@ -409,37 +443,15 @@ namespace Sistema.Presentacion
             this.tabGeneral.Size = new System.Drawing.Size(1229, 583);
             this.tabGeneral.TabIndex = 1;
             // 
-            // label7
+            // btnReporte
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 368);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Precio de venta(*)";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(50, 410);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Stock(*)";
-            // 
-            // txtPrecioVenta
-            // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(144, 365);
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(145, 20);
-            this.txtPrecioVenta.TabIndex = 22;
-            // 
-            // txtStock
-            // 
-            this.txtStock.Location = new System.Drawing.Point(143, 407);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(146, 20);
-            this.txtStock.TabIndex = 23;
+            this.btnReporte.Location = new System.Drawing.Point(432, 16);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(75, 23);
+            this.btnReporte.TabIndex = 8;
+            this.btnReporte.Text = "Reporte";
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // FrmArticulo
             // 
@@ -501,5 +513,6 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnReporte;
     }
 }

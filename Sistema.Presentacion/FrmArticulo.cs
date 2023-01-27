@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema.Presentacion.Reportes;
 
 namespace Sistema.Presentacion
 {
@@ -451,6 +452,12 @@ namespace Sistema.Presentacion
 
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            FrmReporteArticulos reporte = new FrmReporteArticulos();
+            reporte.ShowDialog();
         }
     }
 }
