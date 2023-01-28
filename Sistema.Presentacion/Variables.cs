@@ -13,5 +13,6 @@ namespace Sistema.Presentacion
         public static string NombreProveedor;
         public static int IdCliente;
         public static string NombreCliente;
+        public static int IdVenta;
     }
 }

@@ -85,6 +85,7 @@ namespace Sistema.Presentacion
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnComprobante = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMostrarDetalle)).BeginInit();
             this.PanelMostrarVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListado)).BeginInit();
@@ -289,6 +290,7 @@ namespace Sistema.Presentacion
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnComprobante);
             this.tabPage1.Controls.Add(this.PanelMostrarVenta);
             this.tabPage1.Controls.Add(this.btnAnular);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
@@ -658,6 +660,16 @@ namespace Sistema.Presentacion
             // 
             this.errorIcono.ContainerControl = this;
             // 
+            // btnComprobante
+            // 
+            this.btnComprobante.Location = new System.Drawing.Point(421, 16);
+            this.btnComprobante.Name = "btnComprobante";
+            this.btnComprobante.Size = new System.Drawing.Size(88, 23);
+            this.btnComprobante.TabIndex = 8;
+            this.btnComprobante.Text = "Comprobante";
+            this.btnComprobante.UseVisualStyleBackColor = true;
+            this.btnComprobante.Click += new System.EventHandler(this.btnComprobante_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -745,5 +757,6 @@ namespace Sistema.Presentacion
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.ErrorProvider errorIcono;
+        private System.Windows.Forms.Button btnComprobante;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema.Presentacion.Reportes;
 
 namespace Sistema.Presentacion
 {
@@ -444,6 +445,20 @@ namespace Sistema.Presentacion
             {
 
                 MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnComprobante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Variables.IdVenta = Convert.ToInt32(dtgListado.CurrentRow.Cells["ID"].Value);
+                FrmReporteComprobanteVenta comprobante = new FrmReporteComprobanteVenta();
+                comprobante.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message +  ex.StackTrace);
             }
         }
     }
