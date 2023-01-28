@@ -151,14 +151,14 @@ namespace Sistema.Presentacion
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientesToolStripMenuItem.Text = "Clien&tes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem1
             // 
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.ventasToolStripMenuItem1.Text = "&Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
@@ -197,13 +197,14 @@ namespace Sistema.Presentacion
             // consultaVentasToolStripMenuItem
             // 
             this.consultaVentasToolStripMenuItem.Name = "consultaVentasToolStripMenuItem";
-            this.consultaVentasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.consultaVentasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultaVentasToolStripMenuItem.Text = "Consulta ventas";
+            this.consultaVentasToolStripMenuItem.Click += new System.EventHandler(this.consultaVentasToolStripMenuItem_Click);
             // 
             // consultasComprasToolStripMenuItem
             // 
             this.consultasComprasToolStripMenuItem.Name = "consultasComprasToolStripMenuItem";
-            this.consultasComprasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.consultasComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultasComprasToolStripMenuItem.Text = "Consultas compras";
             // 
             // viewMenu

@@ -23,6 +23,12 @@ namespace Sistema.Negocio
             return datos.Buscar(valor);
         }
 
+        public static DataTable ConsultaFechas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            DVenta datos = new DVenta();
+            return datos.ConsultaFechas(fechaInicio, fechaFin);
+        }
+
         public static DataTable ListarDetalle(int idventa)
         {
             DVenta datos = new DVenta();
